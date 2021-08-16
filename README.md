@@ -1,0 +1,1 @@
+# ydmanager_django
