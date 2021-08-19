@@ -26,11 +26,11 @@ urlpatterns = [
 
     path('', HomeView.as_view(), name='home'),
 
-    #path('actor/', include('actor.urls')),
+    path('actor/', include('actor.urls')),
     #path('label/', include('label.urls')),
 
     path('accounts/', include('django.contrib.auth.urls')),
-    #path('accounts/register/', UserCreateView.as_view(), name='register'),
-    #path('accounts/register/done/', UserCreateDoneTV.as_view(), name='register_done'),
+    path('accounts/register/', UserCreateView.as_view(), name='register'),
+    path('accounts/register/done/', UserCreateDoneTV.as_view(), name='register_done'),
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
