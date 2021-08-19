@@ -28,8 +28,11 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Actor
                     </a>
-                    
-
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <li><a class="dropdown-item" href="{% url 'actor:index' %}">Actor</a></li>
+                      <li><a class="dropdown-item" href="{% url 'actor:actor_add' %}">Add</a></li>
+                      <li><a class="dropdown-item" href="{% url 'actor:actor_change' %}">Change</a></li>
+                    </ul>
                   </li>
 
                 </ul>

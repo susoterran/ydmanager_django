@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}actor_detail.html{% endblock %}
+
+{% block content %}
+
+<div class="row mt-4">
+    <div class="col-md-6 ">
+        <a href="{{ object.image.url }}">
+            <img src="{{ object.image.url }}" style="width: 80%;">
+        </a>
+    </div>
+
+    <div class="col-md-4 mt-2 text-right" style="border: 3px solid #ccc;">
+
+        <p class="p-0 m-0" style="font-size:18px; font-weight: bolder;"> {{ object.name }} </p>
+
+        {% if object.name_eng %}<p class="p-0 m-0">{{ object.name_eng }}</p>
+        {% else %}<p class="p-0 m-0">(blank)</p>{% endif %}
+
+        {% if object.name_jpn %}<p class="p-0 m-0">{{ object.name_jpn }}</p>
+        {% else %}<p class="p-0 m-0">(blank)</p>{% endif %}
+
+        
+
+        <p class="p-0 mt-5">{{ object.info }}</p>
+
+        <p class="p-0 mt-5">정보 등록일 : {{ object.create_date }}</p>
+
+            
+    </div>
+</div>
+{% endblock %}

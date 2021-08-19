@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}actor_change_list.html{% endblock %}
+
+{% block content %}
+
+<h1>Actor Change - {{user}}</h1>
+
+<form method='GET' action='{% url "actor:actor_change" %}'> 
+    <input type="text" name ='qs' placeholder='Search' value="{{ request.GET.qs }}"/> 
+    <input type="submit" value='Search'/> 
+</form>
+
+<table class="table table-striped table-bordered table-condensed">
+    <thead>
+        <tr class="table-info">
+            <th>이미지</th>
+            <th>배우명</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+    <tbody>   
+        {% for item in object_list %}
+        <tr> 
+            <td class="col-md-2 text-center">
+                <div class="thumbnail">
+                <a href="{{ item.get_absolute_url }}">
+                    <img src="{{ item.image.thumb_url }}" class="img-thumbnail" style="width:auto;"">
+                </a>            
+                </div>
+            </td>
+            <td class="col-md-2">{{ item.name }}</td>
+            <td class="col-md-1"><a href="{% url 'actor:actor_update' item.id %}">Update</a></td>
+            <td class="col-md-1"><a href="{% url 'actor:actor_delete' item.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div class="text-center p-4">
+    <span>
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">PreviousPage</a>
+        {% endif %}
+        
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">NextPage</a>
+        {% endif %}
+    </span>
+</div>
+
+
+{% endblock %}
