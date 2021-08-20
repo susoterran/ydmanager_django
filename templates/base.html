@@ -34,7 +34,16 @@
                       <li><a class="dropdown-item" href="{% url 'actor:actor_change' %}">Change</a></li>
                     </ul>
                   </li>
-
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Label
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <li><a class="dropdown-item" href="{% url 'label:index' %}">Label</a></li>
+                      <li><a class="dropdown-item" href="{% url 'label:label_add' %}">Add</a></li>
+                      <li><a class="dropdown-item" href="{% url 'label:label_change' %}">Change</a></li>
+                    </ul>
+                  </li>
                 </ul>
                 <form class="d-flex"> {% csrf_token %}
                   <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

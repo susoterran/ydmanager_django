@@ -27,7 +27,7 @@ urlpatterns = [
     path('', HomeView.as_view(), name='home'),
 
     path('actor/', include('actor.urls')),
-    #path('label/', include('label.urls')),
+    path('label/', include('label.urls')),
 
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/register/', UserCreateView.as_view(), name='register'),
