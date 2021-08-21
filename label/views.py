@@ -53,7 +53,7 @@ class LabelChangeLV(LoginRequiredMixin, ListView):
 
 class LabelUV(LoginRequiredMixin, UpdateView):
     model = Label
-    fields = ('number', 'image', 'info')
+    fields = ('number', 'image', 'category', 'info', 'tags')
     success_url = reverse_lazy('label:index')
 
 class LabelDelV(LoginRequiredMixin, DeleteView):
