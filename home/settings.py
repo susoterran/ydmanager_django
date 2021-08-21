@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'actor.apps.ActorConfig',
     'label.apps.LabelConfig',
+    'company.apps.CompanyConfig',
     'widget_tweaks',
     'taggit.apps.TaggitAppConfig',
     'taggit_templatetags2',    
