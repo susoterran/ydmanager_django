@@ -1,0 +1,14 @@
+<div class="row">
+    {% for item in object_list %}
+    <div class="col-md-2 mb-1 p-1">
+        <div class="thumbnail" style="border: 3px solid #ccc;">
+            <a href="{{ item.get_absolute_url }}">
+                <img src="{{ item.image.thumb_url }}" style="width: 100%;">
+            </a>            
+        </div>
+        <p class="text-center text-secondary p-0 m-0"> {{ item.number }} </p>
+    </div>
+    {% endfor %}
+    
+    {% include "page_num.html" %}
+</div>
