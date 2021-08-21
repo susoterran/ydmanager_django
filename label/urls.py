@@ -24,4 +24,10 @@ urlpatterns = [
     # Example: /label/99/delete/
     path('<int:pk>/delete/', views.LabelDelV.as_view(), name='label_delete'),
 
+    # Example : /label/tag/
+    path('tag/', views.TagCloudTV.as_view(), name='tag_cloud'),
+
+    # Example : /label/tag/tagname/
+    path('tag/<str:tag>/', views.TaggedObjectLV.as_view(), name='tagged_object_list'),
+
 ]

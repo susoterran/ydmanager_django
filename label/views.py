@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, FormView
+from django.views.generic import ListView, DetailView, FormView, TemplateView
 from label.models import Label
 
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -37,7 +37,7 @@ class LabelDV(DetailView):
 class LabelCV(LoginRequiredMixin, CreateView):
     template_name = 'label/label_form.html'
     model = Label    
-    fields = ('number', 'image', 'category', 'info')
+    fields = ('number', 'image', 'category', 'info', 'tags')
     success_url = reverse_lazy('label:index')
 
     def form_valid(self, form):
@@ -60,17 +60,18 @@ class LabelDelV(LoginRequiredMixin, DeleteView):
     model = Label
     success_url = reverse_lazy('label:index')
 
-class SearchLabelFormView(FormView):
-    form_class = LabelSearchForm
-    template_name = 'label/label_search.html'
+class TagCloudTV(LoginRequiredMixin, TemplateView):
+    template_name = 'taggit/taggit_cloud.html'
 
-    def form_valid(self, form):
-        searchWord = form.cleaned_data['search_word']
-        label_list = Label.objects.filter(Q(number__icontains=searchWord) | Q(category__icontains=searchWord)).distinct()
+class TaggedObjectLV(LoginRequiredMixin, ListView):
+    template_name = 'taggit/taggit_post_list.html'
+    model = Label
+    paginate_by = 10
 
-        context = {}
-        context['form'] = form
-        context['search_term'] = searchWord
-        context['object_list'] = label_list
-        
-        return render(self.request, self.template_name, context)
+    def get_queryset(self):
+        return Label.objects.filter(tags__name=self.kwargs.get('tag'))
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['tagname'] = self.kwargs['tag']
+        return context

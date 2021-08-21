@@ -51,7 +51,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'actor.apps.ActorConfig',
     'label.apps.LabelConfig',
-    'widget_tweaks',    
+    'widget_tweaks',
+    'taggit.apps.TaggitAppConfig',
+    'taggit_templatetags2',    
 ]
 
 MIDDLEWARE = [
@@ -146,3 +148,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
+
+# taggit settings
+TAGGIT_CASE_INSENSITIVE = True
+TAGGIT_LIMIT = 10
